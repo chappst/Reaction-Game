@@ -2,6 +2,8 @@
 #include <LED_Library.h> // Include LED library
 #include <Button_Library.h> // Include Button library
 #include <Joystick_Library.h> // Include Joystick library
+#include<stdio.h>
+#include<stdlib.h>
 
 // Define OLED, LED, Button, Joystick pins and variables
 OLED display(OLED_PIN);
@@ -24,24 +26,103 @@ void loop() {
   // Turn on OLED and display welcome message
   display.print("Hello, welcome to the reaction game");
   delay(2000);
-  display.print("To play the reaction game choose your difficulty level,\nEasy:\nSingle led goes on/off\nMedium:\nOnly press button when 2 leds goes on\nHard:\nOnly press button when an led is blue\nYou will play 20 iterations each round");
+  display.print("To play the reaction game choose your difficulty level");
   delay(5000);
+  display.print("Easy:\nSingle led goes on/off);
+  delay(5000);
+  display.print("Medium:\nOnly press button when 2 leds goes on");
+  delay(5000);
+  display.print("Hard:\nOnly press button when an led is blue");
+  delay(5000); 
+  display.print("You will play 20 iterations each round");
   
   // Ask if user wants to continue
-  display.print("Do you want to continue? Double toggle the joystick left for yes.");
-  while (!joystick.isDoubleToggledLeft()) {
-    // Wait for user input
+  bool userWantsToContinue = false;
+
+  while (!userWantsToContinue) {
+  display.print("Do you want to continue? Toggle the joystick left/right to select, double toggle left to confirm.");
+
+  bool selected = false;
+  bool yesSelected = true; // Initial selection is on "Yes"
+  
+  while (!selected) {
+    // Display options ("Yes" and "No")
+    if (yesSelected) {
+      display.print("> Yes\nNo");
+    } else {
+      display.print("Yes\n> No");
+    }
+
+    // Check joystick input to select option
+    if (joystick.isToggledLeft()) {
+      yesSelected = true;
+    } else if (joystick.isToggledRight()) {
+      yesSelected = false;
+    } else if (joystick.isDoubleToggledLeft()) {
+      selected = true;
+    }
+
+    // Delay for responsiveness
+    delay(100);
   }
 
+  // Check user's final selection
+  if (yesSelected) {
+    userWantsToContinue = true;
+  } else {
+    // Perform actions for "No" selection or exit the loop
+    // For example:
+    // Exit the game or perform other actions
+    break;
+  }
+}
+
+
   // Offer difficulty levels and exit option
-  display.print("Choose difficulty level: Easy, Medium, Hard, Exit\nToggle joystick up or down, double toggle left to select");
+  int selectedLevel = 0; // Represents the selected level: 0 for Easy, 1 for Medium, 2 for Hard, 3 for Exit
+
   while (true) {
-    if (joystick.isDoubleToggledLeft()) {
-      // User selected level
+  display.print("Choose difficulty level: Easy, Medium, Hard, Exit\nToggle joystick up or down, double toggle left to select");
+
+  // Display the options based on the selected level
+  if (selectedLevel == 0) {
+    display.print("> Easy\nMedium\nHard\nExit");
+  } else if (selectedLevel == 1) {
+    display.print("Easy\n> Medium\nHard\nExit");
+  } else if (selectedLevel == 2) {
+    display.print("Easy\nMedium\n> Hard\nExit");
+  } else if (selectedLevel == 3) {
+    display.print("Easy\nMedium\nHard\n> Exit");
+  }
+
+  // Check joystick input to scroll through options and select
+  if (joystick.isToggledUp()) {
+    selectedLevel = (selectedLevel + 3) % 4; // Move selection up
+  } else if (joystick.isToggledDown()) {
+    selectedLevel = (selectedLevel + 1) % 4; // Move selection down
+  } else if (joystick.isDoubleToggledLeft()) {
+    // User selected level or Exit
+    if (selectedLevel == 0) {
+      // Perform actions for Easy level selection
+      break;
+    } else if (selectedLevel == 1) {
+      // Perform actions for Medium level selection
+      break;
+    } else if (selectedLevel == 2) {
+      // Perform actions for Hard level selection
+      break;
+    } else if (selectedLevel == 3) {
+      // Perform actions for Exit selection or exit the loop
+      // For example:
+      // Exit the game or perform other actions
       break;
     }
-    // Wait for user input to select difficulty level or exit
   }
+
+  // Delay for responsiveness
+  delay(100);
+}
+
 
   // Start game countdown
   display.print("Game starting in 3...");
