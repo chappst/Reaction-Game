@@ -28,7 +28,7 @@ void loop() {
   delay(2000);
   display.print("To play the reaction game choose your difficulty level");
   delay(5000);
-  display.print("Easy:\nSingle led goes on/off);
+  display.print("Easy:\nSingle led goes on/off");
   delay(5000);
   display.print("Medium:\nOnly press button when 2 leds goes on");
   delay(5000);
