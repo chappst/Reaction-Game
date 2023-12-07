@@ -7,6 +7,8 @@
 #include "lib/SSD1306_OLED.h"
 #include "RGB.h"
 #include "difficulty.h"
+#include "led_matrix.h"
+#include "update_scores.h"
 
 
 
@@ -49,7 +51,8 @@
 
 int main(){
 
-
+    initLedMatrix();
+    initLedMatrix2();
     initRGB();
 
     for(int i = 0; i <100; i++){
