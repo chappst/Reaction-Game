@@ -6,6 +6,7 @@
 #include "common.h"
 #include "lib/SSD1306_OLED.h"
 #include "RGB.h"
+#include "difficulty.h"
 
 
 
