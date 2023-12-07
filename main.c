@@ -6,55 +6,100 @@
 #include "common.h"
 #include "lib/SSD1306_OLED.h"
 #include "RGB.h"
+#include "PWM.h"
 
 
+typedef struct PWM_t{
+    int channel;
+    int pin;
+} PWM_t;
 
-// typedef struct PWM_t{
-//     int channel;
-//     int pin;
-// } PWM_t;
-
-// void checkChannels(){
+void checkChannels(){
     
-//     PWM_t channels[] = {
-//         {0, 0},
-//         {1, 0},
-//         {2, 0},
-//         {3, 0},
-//         {3, 1},
-//         {5, 0},
-//         {5, 1},
-//         {7, 0},
-//         {7, 1},
-//     };
+    PWM_t channels[] = {
+        {0, 0},
+        {1, 0},
+        {2, 0},
+        {3, 0},
+        {3, 1},
+        {5, 0},
+        {5, 1},
+        {7, 0},
+        {7, 1},
+    };
 
 
-//     for (int i = 0; i < 9; i++){
+    for (int i = 0; i < 9; i++){
 
-//         char buffer[128];
+        char buffer[128];
 
-//         PWM_CHANNEL(buffer, channels[i].channel, channels[i].pin);
-//         setPWM(buffer, PERIOD_NS, 50);
-//         char enable[128];
-//         write_config(buffer, "enable", "1");
-//         read_config(enable,buffer, "enable");
-//         printf("%s: %s\n", buffer, enable);
-//         sleepForMs(1500);
+        PWM_CHANNEL(buffer, channels[i].channel, channels[i].pin);
+        initPWM("P8.13", buffer, 1000000000000, 50);
+        printf("%s\n", buffer);
+        sleepForMs(1500);
+    }
 
-//     }
+}
 
-// }
+
 
 
 int main(){
 
+    // initRGB();
+    // setRGB(0,0,128);
+    // for (int i = 0; i< 255; i+=10){
 
-    initRGB();
+    //     setRGB(0,0,i);
+    //     sleepForMs(100);
+    // }
+    // checkChannels();
 
-    for(int i = 0; i <100; i++){
-        setRGB(100-i, i, 100);
-        sleepForMs(100);
-    }
+
+    // initRGB();
+
+
+   
+    // signal(SIGALRM, sig_handler);
+    // alarm(1);
+    // /* Register the Alarm Handler */
+    // // signal(SIGALRM, ALARMhandler);
+
+    // // /* Run SDD1306 Initialization Sequence */
+
+
+
+    // setRGB(0, 255, 0);
+    // for(int i = 0; i <255; i++){
+
+    //     clearDisplay();
+    //     setCursor(0,0);
+
+    //     setRGB(255, i, 255-i);
+
+    //     printNumber(i, DEC);
+        
+    //     sleepForMs(1);
+    //     Display();
+
+    //     sleepForMs(1);
+    // }
+
+
+    // for(int i = 0; i <255; i++){
+
+    //     clearDisplay();
+    //     setCursor(0,0);
+
+    //     setRGB(0, i, 255-i);
+
+    //     printNumber(i, DEC);
+        
+    //     sleepForMs(1);
+    //     Display();
+
+    //     sleepForMs(1);
+    // }
 
 
 
@@ -71,39 +116,6 @@ int main(){
 
     // }
 
-    
-    // /* Initialize I2C bus and connect to the I2C Device */
-    // if(init_i2c_dev(I2C_DEV2_PATH, SSD1306_OLED_ADDR) == 0)
-    // {
-    //     printf("(Main)i2c-2: Bus Connected to SSD1306\r\n");
-    // }
-    // else
-    // {
-    //     printf("(Main)i2c-2: OOPS! Something Went Wrong\r\n");
-    //     exit(1);
-    // }
-
-    // /* Register the Alarm Handler */
-    // // signal(SIGALRM, ALARMhandler);
-
-    // /* Run SDD1306 Initialization Sequence */
-    // display_Init_seq();
-
-    // /* Clear display */
-    // clearDisplay();
-
-    // unsigned char i = 0;
-    // setTextSize(1);
-    // setTextColor(WHITE);
-    // setCursor(0,0);
-
-    // setTextSize(4);
-    // setTextColor(WHITE);
-    // setCursor(0,0);
-    // print_str("scroll");
-
-    // sleepForMs(1);
-    // Display();
     
 
     
