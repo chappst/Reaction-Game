@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <string.h>
+#include "common.h"
 
 #define DEC 0b00001000
 #define NONE 0x00
@@ -32,18 +33,6 @@ void runCommand(char *command){
         printf(" exitcode: %d\n", exitCode);
         exit(1);
     }
-}
-
-//Given functions for delay
-void sleepForMs(long long delayInMs)
-{
-    const long long NS_PER_MS = 1000 * 1000;
-    const long long NS_PER_SECOND = 1000000000;
-    long long delayNs = delayInMs * NS_PER_MS;
-    int seconds = delayNs / NS_PER_SECOND;
-    int nanoseconds = delayNs % NS_PER_SECOND;
-    struct timespec reqDelay = {seconds, nanoseconds};
-    nanosleep(&reqDelay, (struct timespec *)NULL);
 }
 
 void initLedMatrix(){
