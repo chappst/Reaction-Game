@@ -69,3 +69,9 @@ int read_config(char* buffer, const char* path, const char* config) {
 
 	return fclose(fp);
 }
+
+char read_gpio(const char* gpio) {
+	char value[16];
+	read_config(value, gpio, "value");
+	return value[0]; // gpio is always one character
+}

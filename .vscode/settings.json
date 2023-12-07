@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "rgb.h": "c"
+        "rgb.h": "c",
+        "pwm.h": "c",
+        "interface.h": "c",
+        "reaction_time.h": "c"
     }
 }
