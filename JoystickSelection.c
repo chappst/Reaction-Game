@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <JoystickSelection.h>
+#include "JoystickSelection.h"
 #include <unistd.h>
 #include <time.h>
 #include <stdio.h>
@@ -11,6 +11,8 @@
 
 #define A2D_FILE_VOLTAGE2 "/sys/bus/iio/devices/iio:device0/in_voltage2_raw"
 #define A2D_FILE_VOLTAGE3 "/sys/bus/iio/devices/iio:device0/in_voltage3_raw"
+#define A2D_VOLTAGE_REF_V 1.8
+#define A2D_MAX_READING   4095
 
 double Joystick_readY(){
     // Open file
@@ -80,31 +82,16 @@ int JoystickDirection(){
     }
 }
 
-
-int choice = 0;
-int difficulty = -1;
-int prevChoice = -1;
+int JoystickChoice() {
+    int choice = 0;
+    int difficulty = -1;
+    int prevChoice = -1;
 
     while (1) {
         choice = JoystickDirection();
 
         if (choice == 3 && prevChoice != 3) {
-            // Select the difficulty when the joystick is toggled downwards
-            switch (difficulty) {
-                case 0:
-                    printf("Selected difficulty: Easy\n");
-                    break;
-                case 1:
-                    printf("Selected difficulty: Hard\n");
-                    break;
-                case 2:
-                    printf("Selected difficulty: Medium\n");
-                    break;
-                default:
-                    printf("No difficulty selected!\n");
-                    break;
-            }
-
+            displaySelectedDifficulty(difficulty);
             break; // Exit the loop after selecting the difficulty
         }
 
@@ -133,6 +120,7 @@ int prevChoice = -1;
     }
 
     return 0;
+}
 
 
 // Function definitions for displaying difficulty levels
@@ -151,4 +139,21 @@ void displayHard() {
     printf("Instructions for Hard Mode\n");
 }
 
+
+void displaySelectedDifficulty(int difficulty) {
+    switch (difficulty) {
+        case 0:
+            printf("Selected difficulty: Easy\n");
+            break;
+        case 1:
+            printf("Selected difficulty: Hard\n");
+            break;
+        case 2:
+            printf("Selected difficulty: Medium\n");
+            break;
+        default:
+            printf("No difficulty selected!\n");
+            break;
+    }
+}
 
