@@ -1,15 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-// Include your joystick functions here
-double Joystick_readX();
-double Joystick_readY();
-int JoystickDirection();
-
-// Function declarations for displaying difficulty levels
-void displayEasy();
-void displayMed();
-void displayHard();
+#include <JoystickSelection.h>
 
 
 // Function definitions for displaying difficulty levels
