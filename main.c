@@ -8,6 +8,10 @@
 #include "RGB.h"
 #include "PWM.h"
 
+#include "difficulty.h"
+#include "led_matrix.h"
+#include "update_scores.h"
+
 
 typedef struct PWM_t{
     int channel;
@@ -58,6 +62,10 @@ int main(){
 
     // initRGB();
 
+
+    initLedMatrix();
+    initLedMatrix2();
+    initRGB();
 
    
     // signal(SIGALRM, sig_handler);

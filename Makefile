@@ -5,7 +5,8 @@ TARGET_DIR=~/cmpt433/public/myApps/
 PROJ_NAME=reaction_game
 EXEC_HOST=${PROJ_NAME}_host.o
 EXEC_TARGET=${PROJ_NAME}_target.hex
-SRC=*.c lib/*.c #main.c RGB.c PWM.c common.c lib/*.c 
+
+SRC=main.c RGB.c difficulty.h JoystickSelection.h common.c lib/*.c
 
 all: target host
 	echo ${SRC}
