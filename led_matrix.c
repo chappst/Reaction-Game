@@ -60,8 +60,8 @@ void initLedMatrix2(){
     sleepForMs(500);
     runCommand("config-pin P9_19 i2c");
     sleepForMs(500);
-    runCommand("i2cset -y 1 0x70 0x21 0x00");
-    runCommand("i2cset -y 1 0x70 0x81 0x00");
+    runCommand("i2cset -y 2 0x70 0x21 0x00");
+    runCommand("i2cset -y 2 0x70 0x81 0x00");
 }
 
 static void writeI2CBytes(int i2cFileDesc, unsigned char regAddr, unsigned char* data, int numBytes)
