@@ -63,8 +63,6 @@ static void *redButtonReader(void *_){
     while(!isDoneRunning){
         if(isClicked(RED_BUTTON)){
             if(!redButtonClicked){
-                // Perform action for red button press
-                // Example: LEDDisplay_toggleRedMode();
                 redButtonClicked = true;
             }
         }
@@ -81,8 +79,6 @@ static void *greenButtonReader(void *_){
     while(!isDoneRunning){
         if(isClicked(GREEN_BUTTON)){
             if(!greenButtonClicked){
-                // Perform action for green button press
-                // Example: LEDDisplay_toggleGreenMode();
                 greenButtonClicked = true;
             }
         }
@@ -94,5 +90,6 @@ static void *greenButtonReader(void *_){
     }
     return NULL;
 }
+
 
 
