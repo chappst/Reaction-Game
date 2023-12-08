@@ -58,7 +58,7 @@ static bool isClicked(char *fileName){
     }
 }
 
-static void *redButtonReader(void *_){
+static void redButtonReader(){
     while(!isDoneRunning){
         if(isClicked(RED_BUTTON)){
             if(!redButtonClicked){
@@ -74,7 +74,7 @@ static void *redButtonReader(void *_){
     return NULL;
 }
 
-static void *greenButtonReader(void *_){
+static void greenButtonReader(){
     while(!isDoneRunning){
         if(isClicked(GREEN_BUTTON)){
             if(!greenButtonClicked){
