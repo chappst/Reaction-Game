@@ -7,9 +7,7 @@ static void difficulty_medium(){}
 
 static void difficulty_hard(){}
 
-void choose_difficulty(int difficulty){
-
-}
+void choose_difficulty(int difficulty);
 
 
 #endif

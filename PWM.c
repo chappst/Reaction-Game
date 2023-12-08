@@ -1,7 +1,7 @@
 #include "PWM.h"
 #include "common.h"
 
-void initPWM(const char* pinout, const char* channel, unsigned long long int period, int duty_cycle){
+void initPWM(const char* pinout, const char* channel, int period, int duty_cycle){
 
     char buffer[128];
     sprintf(buffer, "config-pin %s pwm", pinout);

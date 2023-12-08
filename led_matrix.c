@@ -1,6 +1,7 @@
 #include "led_matrix.h"
 #include <unistd.h>
 #include <time.h>
+#include "common.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
@@ -23,28 +24,8 @@ static unsigned char nine[] = {0b111, 0b101, 0b101, 0b111, 0b001, 0b001, 0b001};
 
 static unsigned char *digits[] = {zero, one, two, three, four, five, six, seven, eight, nine};
 
-//run linux command within C
-void runCommand(char *command){
-    int exitCode = system(command);
-    if (exitCode != 0){
-        perror("Unable to execute command:");
-        printf(" command: %s\n", command);
-        printf(" exitcode: %d\n", exitCode);
-        exit(1);
-    }
-}
 
-//Given functions for delay
-void sleepForMs(long long delayInMs)
-{
-    const long long NS_PER_MS = 1000 * 1000;
-    const long long NS_PER_SECOND = 1000000000;
-    long long delayNs = delayInMs * NS_PER_MS;
-    int seconds = delayNs / NS_PER_SECOND;
-    int nanoseconds = delayNs % NS_PER_SECOND;
-    struct timespec reqDelay = {seconds, nanoseconds};
-    nanosleep(&reqDelay, (struct timespec *)NULL);
-}
+
 
 void initLedMatrix(){
     runCommand("config-pin P9_18 i2c");

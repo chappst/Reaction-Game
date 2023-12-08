@@ -22,8 +22,6 @@ void initLedMatrix();
 void initLedMatrix2();
 void displayInteger(int value);
 void displayInteger2(int value);
-void runCommand(char *command);
-void sleepForMs(long long delayInMs);
 
 //extern int i2cFileDesc;
 

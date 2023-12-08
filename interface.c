@@ -43,7 +43,7 @@ void initInterface(){
 
 }
 
-static void displayText(int page_num){
+void displayText(int page_num){
 
     Text page = TextPages[page_num];
     

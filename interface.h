@@ -8,6 +8,8 @@ enum{
     HARD_PAGE,
 };
 
+void initInterface();
+void displayText(int page_num);
 void updateInterface(int p1Score, int p2Score, int iteration);
 
 void displayEasy();
