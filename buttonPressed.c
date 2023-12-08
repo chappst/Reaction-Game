@@ -3,7 +3,6 @@
 #include <time.h>
 #include <stdbool.h>
 #include <string.h>
-#include <pthread.h>
 #include <errno.h>
 
 #define RED_BUTTON "/sys/class/gpio/gpio65"
