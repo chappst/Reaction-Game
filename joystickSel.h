@@ -1,5 +1,5 @@
-#ifndef JOYSTICKSELECTION_H
-#define JOYSTICKSELECTION_H
+#ifndef JOYSTICKSEL_H
+#define JOYSTICKSEL_H
 
 double Joystick_readX();
 double Joystick_readY();
@@ -11,4 +11,4 @@ void displayEasy();
 void displayMed();
 void displayHard();
 
-#endif /*JOYSTICKSELECTION_H*/
+#endif /*JOYSTICKSEL_H*/

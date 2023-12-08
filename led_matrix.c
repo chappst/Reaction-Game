@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <string.h>
+#include "common.h"
 
 #define DEC 0b00001000
 #define NONE 0x00
@@ -23,8 +24,6 @@ static unsigned char eight[] = {0b111, 0b101, 0b101, 0b111, 0b101, 0b101, 0b111}
 static unsigned char nine[] = {0b111, 0b101, 0b101, 0b111, 0b001, 0b001, 0b001};
 
 static unsigned char *digits[] = {zero, one, two, three, four, five, six, seven, eight, nine};
-
-
 
 
 void initLedMatrix(){
