@@ -10,6 +10,12 @@
 
 static void start_game();
 
+static void choose_RGBled(int colour);
+
+static void rand_led_on(int colour);
+
+static void rand_led_off();
+
 int end_game(int difficulty, int winner);
 
 static void difficulty_easy();

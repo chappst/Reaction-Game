@@ -25,9 +25,11 @@ static unsigned char seven[] = {0b111, 0b001, 0b001, 0b001, 0b001, 0b001, 0b001}
 static unsigned char eight[] = {0b111, 0b101, 0b101, 0b111, 0b101, 0b101, 0b111};
 static unsigned char nine[] = {0b111, 0b101, 0b101, 0b111, 0b001, 0b001, 0b001};
 //Facial Expression
-static uint8_t smile[8]=   {0x3C,0x42,0xA5,0x81,0xA5,0x99,0x42,0x3C};
-static uint8_t neutral[8]= {0x3C,0x42,0xA5,0x81,0xBD,0x81,0x42,0x3C};
-static uint8_t sad[8]=   {0x3C,0x42,0xA5,0x81,0x99,0xA5,0x42,0x3C};
+// static uint8_t smile[8]=   {0x3C,0x42,0xA5,0x81,0xA5,0x99,0x42,0x3C};
+// static uint8_t neutral[8]= {0x3C,0x42,0xA5,0x81,0xBD,0x81,0x42,0x3C};
+// static uint8_t sad[8]=   {0x3C,0x42,0xA5,0x81,0x99,0xA5,0x42,0x3C};
+static unsigned char smile[] = {0x3C,0x42,0xA5,0x81,0xA5,0x99,0x42,0x3C};
+static unsigned char sad[] = {0x3C,0x42,0xA5,0x81,0x99,0xA5,0x42,0x3C};
 
 static unsigned char *digits[] = {zero, one, two, three, four, five, six, seven, eight, nine};
 
@@ -181,3 +183,44 @@ void displayInteger2(int value)
     writeI2CBytes(i2cFileDesc, REG_ADDR, displayValue, NUM_BYTES);
     
 }
+
+
+void displayface(const char *face) {
+    int i2cFileDesc;
+    unsigned char displayValue[8];
+
+    if (strcmp(face, "smile") == 0) {
+        for(int i = 0; i < MATRIX_LENGTH; i++){
+            displayValue[i] = smile[i] >> 1 | (smile[i] << 7);
+        }
+        i2cFileDesc = initI2CBus(I2CDRV_LINUX_BUS1, BUS_ADDR);
+        writeI2CBytes(i2cFileDesc, REG_ADDR, displayValue, NUM_BYTES);
+    } else if (strcmp(face, "sad") == 0) {
+        for(int i = 0; i < MATRIX_LENGTH; i++){
+            displayValue[i] = sad[i] >> 1 | (smile[i] << 7);
+        }
+        i2cFileDesc = initI2CBus(I2CDRV_LINUX_BUS1, BUS_ADDR);
+        writeI2CBytes(i2cFileDesc, REG_ADDR, displayValue, NUM_BYTES);
+    }
+}
+
+
+void displayface2(const char *face) {
+    int i2cFileDesc;
+    unsigned char displayValue[8];
+
+    if (strcmp(face, "smile") == 0) {
+        for(int i = 0; i < MATRIX_LENGTH; i++){
+            displayValue[i] = smile[i] >> 1 | (smile[i] << 7);
+        }
+        i2cFileDesc = initI2CBus(I2CDRV_LINUX_BUS2, BUS_ADDR);
+        writeI2CBytes(i2cFileDesc, REG_ADDR, displayValue, NUM_BYTES);
+    } else if (strcmp(face, "sad") == 0) {
+        for(int i = 0; i < MATRIX_LENGTH; i++){
+            displayValue[i] = sad[i] >> 1 | (smile[i] << 7);
+        }
+        i2cFileDesc = initI2CBus(I2CDRV_LINUX_BUS2, BUS_ADDR);
+        writeI2CBytes(i2cFileDesc, REG_ADDR, displayValue, NUM_BYTES);
+    }
+}
+

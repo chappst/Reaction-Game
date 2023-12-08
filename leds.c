@@ -23,12 +23,8 @@
 #define BUTTONRED_GPIO_PIN 65
 #define BUTTONGREEN_GPIO_PIN 27
 
-// init() must be called before any other functions
+//Initiating pins
 void LED_init(void){
-    GPIO_configPin(LEDGREEN_PIN_NUM);
-    GPIO_setForOutput(LEDGREEN_GPIO_PIN);
-    LED_turnOff('g');
-
     GPIO_configPin(LEDRED_PIN_NUM);
     GPIO_setForOutput(LEDRED_GPIO_PIN);
     LED_turnOff('r');
@@ -37,12 +33,17 @@ void LED_init(void){
     GPIO_setForOutput(LEDYELLOW_GPIO_PIN);
     LED_turnOff('y');
 
+    GPIO_configPin(LEDGREEN_PIN_NUM);
+    GPIO_setForOutput(LEDGREEN_GPIO_PIN);
+    LED_turnOff('g');
+
+
     return;
 }
 
 
-// Return the Pin name of the specified LED
-static int selectPin(char colour, bool light_state){
+//Returns the coloured pin that is called
+static int selectPin(char colour, bool isOn){
     int pin;
 
     if (colour == 'g'){

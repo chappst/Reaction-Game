@@ -24,6 +24,8 @@ void clearMatrix();
 void clearMatrix2();
 void displayInteger(int value);
 void displayInteger2(int value);
+void displayface(const char *face);
+void displayface2(const char *face);
 
 //extern int i2cFileDesc;
 

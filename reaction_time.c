@@ -9,14 +9,6 @@ typedef struct ButtonArgs{
 
 }ButtonArgs;
 
-#define PLAYER_RED_RED "/sys/class/gpio/gpio65"
-#define PLAYER_RED_YELLOW "/sys/class/gpio/gpio26"
-#define PLAYER_RED_GREEN "/sys/class/gpio/gpio44"
-
-#define PLAYER_GREEN_RED "/sys/class/gpio/gpio46"
-#define PLAYER_GREEN_YELLOW "/sys/class/gpio/gpio47"
-#define PLAYER_GREEN_GREEN "/sys/class/gpio/gpio27"
-
 
 #define TIMEOUT_S 3
 
@@ -56,7 +48,29 @@ void* thread_check_button(void* args){
 }
 
 
-Reaction start_button_timing(){
+Reaction start_button_timing(int randColor){
+
+    switch(randColor){
+        case RED:
+            buttons[0].button = PLAYER_RED_RED;
+            buttons[1].button = PLAYER_GREEN_RED;
+
+            break;
+        case GREEN:
+
+            buttons[0].button = PLAYER_RED_GREEN;
+            buttons[1].button = PLAYER_GREEN_GREEN;
+            break;
+        case YELLOW:
+            buttons[0].button = PLAYER_RED_YELLOW;
+            buttons[1].button = PLAYER_GREEN_YELLOW;
+            break;
+
+        default:
+            printf("ERROR INVALID COLOR PASSED!!!!\n");
+            break;
+    }
+
 
     printf("%c %c\n", read_gpio(buttons[0].button),read_gpio(buttons[1].button));
     for (int i = 0; i < NUM_BUTTONS; i++){

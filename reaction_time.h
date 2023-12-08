@@ -18,5 +18,5 @@ typedef struct Reaction{
 
 
 
-Reaction start_button_timing();
+Reaction start_button_timing(int randColor);
 #endif 

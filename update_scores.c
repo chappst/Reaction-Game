@@ -9,3 +9,4 @@ void updateScores(int score_player1, int score_player2) {
     displayInteger2(score_player1);
     displayInteger(score_player2);
 }
+

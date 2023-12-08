@@ -2,6 +2,7 @@
 
 
 void initBuzzer();
-void setBuzzer(int freq);
+void playTune();
+void setBuzzer(int);
 
 

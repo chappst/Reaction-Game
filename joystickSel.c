@@ -130,9 +130,9 @@ int JoystickChoice() {
 
                 difficulty = page;
 
-                if (difficulty != EASY){
-                    break;
-                }
+                // if (difficulty != EASY){
+                //     break;
+                // }
 
                 selected = 1;
 

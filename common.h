@@ -11,6 +11,14 @@
 // #define GREEN 2U
 // #define BLUE 3U
 
+#define PLAYER_RED_RED "/sys/class/gpio/gpio65"
+#define PLAYER_RED_YELLOW "/sys/class/gpio/gpio26"
+#define PLAYER_RED_GREEN "/sys/class/gpio/gpio44"
+
+#define PLAYER_GREEN_RED "/sys/class/gpio/gpio46"
+#define PLAYER_GREEN_YELLOW "/sys/class/gpio/gpio47"
+#define PLAYER_GREEN_GREEN "/sys/class/gpio/gpio27"
+
 enum{
     EASY =1,
     MEDIUM,
@@ -20,7 +28,7 @@ enum{
 enum{
     RED,
     GREEN,
-    BLUE, 
+    YELLOW, 
 };
 
 void runCommand(char *command);

@@ -1,5 +1,6 @@
 
 #include "interface.h"
+#include "led_matrix.h"
 #include "RGB.h"
 #include "common.h"
 #include <stdlib.h>
@@ -93,12 +94,21 @@ void updateInterface(int p1Score, int p2Score, int iteration, int num_rounds){
     if(p1Score > p2Score){
 
             winner = 1;
+            if (iteration == num_rounds){
+            displayface2("smile");
+            displayface("sad");
+            }
 
             printf("P1 wins the round!\n");
 
     }else{
         winner = 2;
 
+        if (iteration == num_rounds){
+            
+            displayface2("sad");
+            displayface("smile");
+        }
         printf("P2 wins the round!\n");
     }
 
@@ -110,6 +120,7 @@ void updateInterface(int p1Score, int p2Score, int iteration, int num_rounds){
 
 
     printText(first_line, second_line);
+
 
 
     // // get percentage of points won by each player 

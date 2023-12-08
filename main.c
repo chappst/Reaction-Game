@@ -127,8 +127,20 @@ void test_everything(){
 
 int main(){
 
+    initRGB();  
+    // setRGB(cYELLOW);
+    
     init_everything();
+    clearMatrix();
+    clearMatrix2();
+    // displayface("smile");
+    // displayface2("sad");
     while(1){
+
+
+        playTune();
+        clearMatrix();
+        clearMatrix2();
 
 
         int difficulty = JoystickChoice();
