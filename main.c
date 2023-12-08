@@ -11,6 +11,10 @@
 #include "difficulty.h"
 #include "led_matrix.h"
 #include "update_scores.h"
+#include "interface.h"
+#include "buzzer.h"
+#include "reaction_time.h"
+
 
 
 typedef struct PWM_t{
@@ -38,7 +42,7 @@ void checkChannels(){
         char buffer[128];
 
         PWM_CHANNEL(buffer, channels[i].channel, channels[i].pin);
-        initPWM("P8.13", buffer, 1000000000000, 50);
+        // initPWM("P9.21", buffer, 1000000000000, 50);
         printf("%s\n", buffer);
         sleepForMs(1500);
     }
@@ -63,12 +67,24 @@ int main(){
     // initRGB();
 
 
-    initLedMatrix();
-    initLedMatrix2();
-    initRGB();
+    // initLedMatrix();
+    // initLedMatrix2();
+    // initRGB();
+    // initInterface();
 
-   
-    // signal(SIGALRM, sig_handler);
+    // displayText(1);
+
+    printf("Starting!\n");
+
+    Reaction reaction = start_button_timing();
+
+    printf("%.2f, %.2f\n", reaction.player1, reaction.player2);
+    
+    // initBuzzer();
+
+    // setBuzzer(0);
+
+
     // alarm(1);
     // /* Register the Alarm Handler */
     // // signal(SIGALRM, ALARMhandler);
