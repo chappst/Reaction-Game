@@ -23,31 +23,7 @@ static void sleepForMs(long long delayInMs)
     struct timespec reqDelay = {seconds, nanoseconds};
     nanosleep(&reqDelay, (struct timespec *) NULL);
 }
-
-static char readButtonValue(char *fileName){
-    char* file = malloc(sizeof(char)*(strlen(fileName)+7));  
-
-    snprintf(file, strlen(fileName)+7, "%s/value", fileName);
-
-    errno = 0;
-    FILE *pFile = fopen(file , "r"); 
-    
-    if (pFile == NULL) {
-        printf("ERROR: Unable to open file (%s) for read\n", file);
-        perror("ERROR");
-        exit(-1); 
-    }
-    
-    const int MAX_LENGTH = 1024; 
-    char buff[MAX_LENGTH]; 
-    fgets(buff, MAX_LENGTH, pFile);
-    
-    fclose(pFile);
-    free(file);
-    file = NULL;
-    
-    return buff[0];
-}
+   
 
 static bool isClicked(char *fileName){
     if(readButtonValue(fileName) == '1'){
