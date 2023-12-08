@@ -12,8 +12,6 @@
 static bool redButtonClicked = false;
 static bool greenButtonClicked = false;
 
-static pthread_t redButtonThreadId;
-static pthread_t greenButtonThreadId;
 static bool isDoneRunning = false;
 
 static void sleepForMs(long long delayInMs)
@@ -97,17 +95,4 @@ static void *greenButtonReader(void *_){
     return NULL;
 }
 
-void RedButtonReader_startReading(){
-    pthread_create(&redButtonThreadId, NULL, redButtonReader, NULL);
-}
-
-void GreenButtonReader_startReading(){
-    pthread_create(&greenButtonThreadId, NULL, greenButtonReader, NULL);
-}
-
-void ButtonReader_stopReading(){
-    isDoneRunning = true;
-    pthread_join(redButtonThreadId, NULL);
-    pthread_join(greenButtonThreadId, NULL);
-}
 
