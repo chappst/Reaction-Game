@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include "common.h"
+#include <stdint.h>
 
 #define DEC 0b00001000
 #define NONE 0x00
@@ -23,6 +24,10 @@ static unsigned char six[] = {0b111, 0b100, 0b100, 0b111, 0b101, 0b101, 0b111};
 static unsigned char seven[] = {0b111, 0b001, 0b001, 0b001, 0b001, 0b001, 0b001};
 static unsigned char eight[] = {0b111, 0b101, 0b101, 0b111, 0b101, 0b101, 0b111};
 static unsigned char nine[] = {0b111, 0b101, 0b101, 0b111, 0b001, 0b001, 0b001};
+//Facial Expression
+static uint8_t smile[8]=   {0x3C,0x42,0xA5,0x81,0xA5,0x99,0x42,0x3C};
+static uint8_t neutral[8]= {0x3C,0x42,0xA5,0x81,0xBD,0x81,0x42,0x3C};
+static uint8_t sad[8]=   {0x3C,0x42,0xA5,0x81,0x99,0xA5,0x42,0x3C};
 
 static unsigned char *digits[] = {zero, one, two, three, four, five, six, seven, eight, nine};
 

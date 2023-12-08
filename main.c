@@ -128,8 +128,18 @@ void test_everything(){
 int main(){
 
     init_everything();
+    while(1){
 
-    test_everything();
+
+        int difficulty = JoystickChoice();
+
+
+        int winner = choose_difficulty(difficulty);
+        
+        end_game(difficulty, winner);
+    }
+    
+
 
     
     

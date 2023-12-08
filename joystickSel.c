@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "joystickSel.h"
 #include "interface.h"
+#include "common.h"
 #include <unistd.h>
 #include <time.h>
 #include <stdio.h>
@@ -106,26 +107,32 @@ int JoystickChoice() {
 
         switch (choice) {
             case 4: 
-                if (page == 3){
+                if (page >= 3){
                     break;
                 }
                 page++;
-                difficulty = 0; // Set a default value if necessary
+                difficulty = EASY; // Set a default value if necessary
                 displayEasy();
                 break;
-            case 3: if (page == 0){
+            case 3: 
+                if (page == 0){
                     break;
                 }
                 page--;
-                difficulty = 1; // Set a default value if necessary
+                difficulty = EASY; // Set a default value if necessary
                 displayHard();
+                break;
             case 1: 
-                if (page == 0){
+                if (page <= 0){
 
                     break;
                 }
 
                 difficulty = page;
+
+                if (difficulty != EASY){
+                    break;
+                }
 
                 selected = 1;
 
@@ -157,7 +164,8 @@ int JoystickChoice() {
         // prevChoice = choice;
     }
 
-    return 0;
+    return difficulty;
+
 }
 
 

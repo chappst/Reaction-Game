@@ -19,10 +19,14 @@ static const RGB rgbColour[] = {
     cBLUE
 };
 
+
+
 static void start_game(){
     // initLedMatrix();
     // initLedMatrix2();
     // initBuzzer();
+    clearInterface();
+    setRGB(cOFF);
     setBuzzer(30);
     sleepForMs(500);
     setBuzzer(0);
@@ -31,30 +35,49 @@ static void start_game(){
     srand(0);
 
     for(int i = 3; i > 0; i--){
-        displayText(i);
         updateScores(i, i);
         sleepForMs(1000);
     }
     
     clearMatrix();
     clearMatrix2();
+    sleepForMs(1000);
 
 }
 
 
-static void end_game(int difficulty){
+int end_game(int difficulty, int winner){
     //Buzzer goes off again
+    setBuzzer(30);
+    sleepForMs(500);
+    setBuzzer(0);
+
+    clearMatrix();
+    clearMatrix2();
+    
+
     //light led of winner
     //display continue screen():
-    if(JoystickDirection() == 3){
+    displayContinue(winner);
+
+
+    int dir;
+    do{
+        dir = JoystickDirection();
+
+
+    }while(dir == 0);
+
+    if(JoystickDirection() == 1){
+        clearInterface();
         choose_difficulty(difficulty);
     }else{
         // Go back to main screen
-        // DISPLAY(main_menu)
+
     }
 }
 
-void play_easy(){
+int play_easy(){
 
     start_game();
 
@@ -80,11 +103,19 @@ void play_easy(){
         setRGB(cOFF);
         updateScores(p1Score, p2Score);
         updateInterface(p1Score, p2Score, i, NUM_ROUNDS);
-        sleepForMs(2000);
+        sleepForMs(rand()%3500);
     }
+
+    // if(p1Score > p1Score){
+    //     updateScores();
+    // }else{
+    //     updateScores();
+    // }
     
     updateInterface(p1Score, p2Score, NUM_ROUNDS , NUM_ROUNDS);
-    // end_game(EASY);
+    
+    return (p1Score > p2Score) ? 1:2; // return who won
+    
 
 }
 
@@ -106,7 +137,7 @@ static void play_medium(){
     // Start_button_timing(randCol);
 
 
-    end_game(MEDIUM);
+    
 
 }
 
@@ -119,21 +150,35 @@ static void play_hard(){
     // light_led(colour[randCol])
  
 
-    end_game(HARD);
+    
 
 
 }
 
-void choose_difficulty(int difficulty){
+int choose_difficulty(int difficulty){
+
+    
+    clearInterface();
+
+    int winner;
 
     switch(difficulty){
         case EASY:
-            play_easy();
+
+            winner = play_easy();
+            break;
         case MEDIUM:
+
             play_medium();
+            break;
         case HARD:
+
             play_hard();
+            break;
         default:
-            play_easy();
+
+            winner = play_easy();
+            break;
     }
+    return winner;
 }

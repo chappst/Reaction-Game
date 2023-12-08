@@ -3,6 +3,26 @@
 
 #include <stdio.h>
 
+// #define EASY 1U
+// #define MEDIUM 2U
+// #define HARD 3U
+
+// #define RED 1U
+// #define GREEN 2U
+// #define BLUE 3U
+
+enum{
+    EASY =1,
+    MEDIUM,
+    HARD,
+};
+
+enum{
+    RED,
+    GREEN,
+    BLUE, 
+};
+
 void runCommand(char *command);
 
 void sleepForMs(long long delayInMs);

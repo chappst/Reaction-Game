@@ -16,7 +16,8 @@ void setBuzzer(int duty_cycle){
     setPWM(BUZZER_PWM, PERIOD_NS, duty_cycle);
 }
 
-void Buzzer(){
+void setFrequency(int freq_khz){
 
+    // setPWM(BUZZER_PWM, , duty_cycle);
 }
 
