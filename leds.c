@@ -18,6 +18,8 @@
 #define LEDRED_PIN_NUM "P9_23"
 #define LEDGREEN_GPIO_PIN 70
 #define LEDGREEN_PIN_NUM "P8_45"
+#define LEDYELLOW_GPIO_PIN 61
+#define LEDYELLOW_PIN_NUM "P8_26"
 #define BUTTONRED_GPIO_PIN 65
 #define BUTTONGREEN_GPIO_PIN 27
 
@@ -30,7 +32,11 @@ void LED_init(void){
     GPIO_configPin(LEDRED_PIN_NUM);
     GPIO_setForOutput(LEDRED_GPIO_PIN);
     LED_turnOff('r');
-    
+
+    GPIO_configPin(LEDYELLOW_PIN_NUM);
+    GPIO_setForOutput(LEDYELLOW_GPIO_PIN);
+    LED_turnOff('y');
+
     return;
 }
 
@@ -46,6 +52,10 @@ static int selectPin(char colour, bool light_state){
     else if(colour == 'r'){
         /*Turn RED_LED on*/
         pin = LEDRED_GPIO_PIN;
+    }
+    else if(colour == 'y'){
+        /*Turn YELLOW_LED on*/
+        pin = LEDYELLOW_GPIO_PIN;
     }
 
     return pin;
