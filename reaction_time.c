@@ -1,11 +1,6 @@
 
 #include "reaction_time.h"
-#include "common.h"
 #include <pthread.h>
-#include <stdbool.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 typedef struct ButtonArgs{
     const char* button; // filepath to read for button
@@ -16,7 +11,10 @@ typedef struct ButtonArgs{
 
 #define BUTTON1_PATH "/sys/class/gpio/gpio66"
 #define BUTTON2_PATH "/sys/class/gpio/gpio67"
-#define TIMEOUT_S 5
+#define TIMEOUT_S 3
+
+#define PRESSED '1'
+#define UNPRESSED '0'
 
 #define NUM_BUTTONS 2
 static ButtonArgs buttons[] = {
@@ -40,7 +38,7 @@ void* thread_check_button(void* args){
     // either one of the thre
     while(1){
 
-        if (read_gpio(button->button) == '1' || timeout ){
+        if (read_gpio(button->button) == PRESSED || timeout ){
             break;
         }
 
@@ -53,6 +51,10 @@ void* thread_check_button(void* args){
 
 Reaction start_button_timing(){
 
+    printf("%c %c\n", read_gpio(buttons[0].button),read_gpio(buttons[1].button));
+    for (int i = 0; i < NUM_BUTTONS; i++){
+        while(read_gpio(buttons[i].button) == PRESSED);
+    }
 
     for (int i = 0; i < NUM_BUTTONS; i++){
         buttons[i].reaction_us = 0;

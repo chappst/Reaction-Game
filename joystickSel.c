@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "joystickSel.c.h"
+#include "joystickSel.h"
 #include <unistd.h>
 #include <time.h>
 #include <stdio.h>

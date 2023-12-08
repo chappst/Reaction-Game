@@ -65,5 +65,5 @@ void updateInterface(int p1Score, int p2Score, int iteration){
     double p1Percent = ((double)p1Score/iteration)*100.0;
     double p2Percent = ((double)p2Score/iteration)*100.0;
 
-    setRGB(p1Percent, p2Percent, 0);
+    setRGB((RGB){ p1Percent, p2Percent, 0 });
 }

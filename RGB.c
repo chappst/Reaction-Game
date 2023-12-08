@@ -6,12 +6,12 @@
 #include "PWM.h"
 
 #define RED_PWM PWM_9_22
-#define GREEN_PWM PWM_9_16
-#define BLUE_PWM PWM_9_14
+#define GREEN_PWM PWM_9_14
+#define BLUE_PWM PWM_9_16
 
 #define RED_PIN "P9.22"
-#define GREEN_PIN "P9.16"
-#define BLUE_PIN "P9.14"
+#define GREEN_PIN "P9.14"
+#define BLUE_PIN "P9.16"
 
 
 #define PERIOD_NS 1000000
@@ -29,11 +29,11 @@ void initRGB(){
 }
 
 
-void setRGB(int r, int g, int b){
+void setRGB(RGB rgb){
 
-    setPWM(RED_PWM, PERIOD_NS, r);
-    setPWM(GREEN_PWM, PERIOD_NS, g);
-    setPWM(BLUE_PWM, PERIOD_NS, b);
+    setPWM(RED_PWM, PERIOD_NS, rgb.red);
+    setPWM(GREEN_PWM, PERIOD_NS, rgb.green);
+    setPWM(BLUE_PWM, PERIOD_NS, rgb.blue);
 }
 
 

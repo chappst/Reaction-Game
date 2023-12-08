@@ -1,4 +1,4 @@
-CFLAGS=-std=c99 -D _POSIX_C_SOURCE=200809L -Werror -static
+CFLAGS=-std=c99 -D _POSIX_C_SOURCE=200809L -Werror -static -pthread
 
 TARGET_DIR=~/cmpt433/public/myApps/
 

@@ -13,49 +13,77 @@
 #include "update_scores.h"
 #include "interface.h"
 #include "buzzer.h"
+#include "difficulty.h"
 #include "reaction_time.h"
 
 
 
-typedef struct PWM_t{
-    int channel;
-    int pin;
-} PWM_t;
+// typedef struct PWM_t{
+//     int channel;
+//     int pin;
+// } PWM_t;
 
-void checkChannels(){
+// void checkChannels(){
     
-    PWM_t channels[] = {
-        {0, 0},
-        {1, 0},
-        {2, 0},
-        {3, 0},
-        {3, 1},
-        {5, 0},
-        {5, 1},
-        {7, 0},
-        {7, 1},
-    };
+//     PWM_t channels[] = {
+//         {0, 0},
+//         {1, 0},
+//         {2, 0},
+//         {3, 0},
+//         {3, 1},
+//         {5, 0},
+//         {5, 1},
+//         {7, 0},
+//         {7, 1},
+//     };
 
 
-    for (int i = 0; i < 9; i++){
+//     for (int i = 0; i < 9; i++){
 
-        char buffer[128];
+//         char buffer[128];
 
-        PWM_CHANNEL(buffer, channels[i].channel, channels[i].pin);
-        // initPWM("P9.21", buffer, 1000000000000, 50);
-        printf("%s\n", buffer);
-        sleepForMs(1500);
-    }
+//         PWM_CHANNEL(buffer, channels[i].channel, channels[i].pin);
+//         // initPWM("P9.21", buffer, 1000000000000, 50);
+//         printf("%s\n", buffer);
+//         sleepForMs(1500);
+//     }
+
+// }
+
+void checkRGB(){
+
+
+    initRGB();
+    setRGB((RGB){100,0,0});
+    sleepForMs(1000);
+    setRGB((RGB){0,100,0});
+    sleepForMs(1000);
+    setRGB((RGB){0,0,100});
+
 
 }
 
 
 
-
 int main(){
 
+    // checkRGB();
+    initInterface();
+
+    displayText(1);
+
+    
+    initRGB();
+    // makinitBuzzer();
+    // setRGB((RGB){100,0,0});
+    // setBuzzer(0);
+
+    play_easy();
+
+
+
     // initRGB();
-    // setRGB(0,0,128);
+    // setRGB(0,0,100);
     // for (int i = 0; i< 255; i+=10){
 
     //     setRGB(0,0,i);
@@ -74,11 +102,11 @@ int main(){
 
     // displayText(1);
 
-    printf("Starting!\n");
+    // printf("Starting!\n");
 
-    Reaction reaction = start_button_timing();
+    // Reaction reaction = start_button_timing();
 
-    printf("%.2f, %.2f\n", reaction.player1, reaction.player2);
+    // printf("%.2f, %.2f\n", reaction.player1, reaction.player2);
     
     // initBuzzer();
 

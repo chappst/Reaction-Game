@@ -4,15 +4,28 @@
 #include "reaction_time.h"
 #include "joystickSel.h"
 #include "RGB.h"
+#include "buzzer.h"
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+static const RGB rgbColour[] = {
+    cRED,
+    cGREEN,
+    cBLUE
+};
 
 static void start_game(){
-    //Call buzzer for start of game 
+    // setBuzzer(50);
     //Could Light up RGB LED too
-    sleepForMs(3000);
+    setRGB(cOFF);
+    srand(0);
+    sleepForMs(2000);
 
 }
 
-static void end_game(difficulty){
+
+static void end_game(int difficulty){
     //Buzzer goes off again
     //light led of winner
     //display continue screen():
@@ -24,13 +37,35 @@ static void end_game(difficulty){
     }
 }
 
-static void play_easy(){
+void play_easy(){
 
     start_game();
 
-    // LED_light(LED);
-    start_button_timing();
-    end_game(EASY);
+    int p1Score = 0;
+    int p2Score = 0;
+
+    for(int i = 0; i <= 3; i++){
+        setRGB(cRED);
+        Reaction reaction = start_button_timing();
+        if (reaction.player1 < reaction.player2){
+            p1Score++;
+            printf("Player 1 wins! Score: %d\n", p1Score);
+        }else{
+            p2Score++;
+            printf("Player 2 wins! Score: %d\n", p2Score);
+        }
+        setRGB(cOFF);
+        // updateInterface(p1Score, p2Score, i);
+        sleepForMs(2000);
+    }
+    
+    if(p1Score > p2Score){
+        printf("Player 1 wins the game!\n");
+    }else{
+        printf("Player 2 wins the game!\n");
+    }
+
+    // end_game(EASY);
 
 }
 
@@ -45,8 +80,9 @@ static void play_medium(){
     start_game();
 
     //Medium difficulty algorithm
-    int randCol = rand() % 4; //Randomly choose colour
-    setRGB(colour[randCol][0], colour[randCol][1], colour[randCol][2]);
+    int randCol = rand() % 3; //Randomly choose colour
+
+    setRGB(rgbColour[randCol]);
 
     // Start_button_timing(randCol);
 
