@@ -10,7 +10,7 @@ enum{
 
 void initInterface();
 void displayText(int page_num);
-void updateInterface(int p1Score, int p2Score, int iteration);
+void updateInterface(int p1Score, int p2Score, int iteration, int num_rounds);
 
 void displayEasy();
 void displayMedium();

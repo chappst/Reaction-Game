@@ -9,8 +9,15 @@ typedef struct ButtonArgs{
 
 }ButtonArgs;
 
-#define BUTTON1_PATH "/sys/class/gpio/gpio66"
-#define BUTTON2_PATH "/sys/class/gpio/gpio67"
+#define PLAYER_RED_RED "/sys/class/gpio/gpio65"
+#define PLAYER_RED_YELLOW "/sys/class/gpio/gpio26"
+#define PLAYER_RED_GREEN "/sys/class/gpio/gpio44"
+
+#define PLAYER_GREEN_RED "/sys/class/gpio/gpio46"
+#define PLAYER_GREEN_YELLOW "/sys/class/gpio/gpio47"
+#define PLAYER_GREEN_GREEN "/sys/class/gpio/gpio27"
+
+
 #define TIMEOUT_S 3
 
 #define PRESSED '1'
@@ -18,8 +25,8 @@ typedef struct ButtonArgs{
 
 #define NUM_BUTTONS 2
 static ButtonArgs buttons[] = {
-    {.button=BUTTON1_PATH},
-    {.button=BUTTON2_PATH}
+    {.button=PLAYER_RED_RED}, //player 1
+    {.button=PLAYER_GREEN_GREEN} // player 2
 };
 
 static bool timeout = false;
@@ -68,12 +75,15 @@ Reaction start_button_timing(){
     
     for (int i = 0; i < NUM_BUTTONS; i++){
         pthread_join(buttons[i].tid, NULL);
-        printf("%.2f\n", buttons[i].reaction_us);
+        // cancel the alarm if the thread finishes
+        alarm(0);
+        printf("p%d: %.2f\n", i+1, buttons[i].reaction_us);
     }
     
 
     return (Reaction){
         .player1 = buttons[0].reaction_us,
         .player2 =buttons[1].reaction_us,
+        .timeout = timeout,
     };
 }

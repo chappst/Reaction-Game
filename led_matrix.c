@@ -12,6 +12,7 @@
 #define NONE 0x00
 
 // Define digit patterns
+static unsigned char off[] = {0b000, 0b000, 0b000, 0b000, 0b000, 0b000, 0b000};
 static unsigned char zero[] = {0b111, 0b101, 0b101, 0b101, 0b101, 0b101, 0b111};
 static unsigned char one[] = {0b110, 0b010, 0b010, 0b010, 0b010, 0b010, 0b111};
 static unsigned char two[] = {0b111, 0b001, 0b001, 0b111, 0b100, 0b100, 0b111};
@@ -86,6 +87,26 @@ static int initI2CBus(char* bus, int address)
 unsigned char *getBinary(int digit)
 {
     return digits[digit];
+}
+
+void clearMatrix(){
+    runCommand("i2cset -y 1 0x70 0x02 0x00"); 
+    runCommand("i2cset -y 1 0x70 0x04 0x00"); 
+    runCommand("i2cset -y 1 0x70 0x06 0x00"); 
+    runCommand("i2cset -y 1 0x70 0x08 0x00"); 
+    runCommand("i2cset -y 1 0x70 0x0a 0x00"); 
+    runCommand("i2cset -y 1 0x70 0x0c 0x00"); 
+    runCommand("i2cset -y 1 0x70 0x0e 0x00"); 
+}
+void clearMatrix2(){
+
+    runCommand("i2cset -y 2 0x70 0x02 0x00"); 
+    runCommand("i2cset -y 2 0x70 0x04 0x00"); 
+    runCommand("i2cset -y 2 0x70 0x06 0x00"); 
+    runCommand("i2cset -y 2 0x70 0x08 0x00"); 
+    runCommand("i2cset -y 2 0x70 0x0a 0x00"); 
+    runCommand("i2cset -y 2 0x70 0x0c 0x00"); 
+    runCommand("i2cset -y 2 0x70 0x0e 0x00"); 
 }
 
 void displayInteger(int value)

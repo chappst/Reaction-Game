@@ -15,6 +15,8 @@
 #include "buzzer.h"
 #include "difficulty.h"
 #include "reaction_time.h"
+#include "leds.h"
+#include "joystickSel.h"
 
 
 
@@ -50,124 +52,86 @@
 
 // }
 
+void init_everything(){
+    LED_init();
+    initLedMatrix();
+    initLedMatrix2();
+    initBuzzer();
+    initInterface();
+    initRGB();
+
+}
+
 void checkRGB(){
 
 
-    initRGB();
+
+    sleepForMs(1000);
+    printf("Lighting up red\n");
     setRGB((RGB){100,0,0});
     sleepForMs(1000);
+     printf("Lighting up green\n");
     setRGB((RGB){0,100,0});
     sleepForMs(1000);
+    printf("Lighting up blue\n");
     setRGB((RGB){0,0,100});
+    sleepForMs(1000);
+    printf("Turning off RGB\n");
+    sleepForMs(1000);
+}
+
+void test_everything(){
+
+    
+
+    // printf("Displaying text!\n");
+    // displayText(1);
+    // sleepForMs(2000);
+    // setBuzzer(50);
+    // printf("Buzz!!!\n");
+    // sleepForMs(1000);
+    // printf("Buzz off!!!\n");
+    // setBuzzer(0);
+    // sleepForMs(2000);
+    // printf("Checking RGB colors\n");
+    // checkRGB();
+
+    // printf("Now counting down on matrices\n");
+  
+
+    // JoystickChoice();
+
+    play_easy();
+
+    // clearMatrix();
+    // clearMatrix2();
+
+    // LED_turnOn('r');
+    // sleepForMs(1000);
+    // LED_turnOff('r');
+
+    // LED_turnOn('y');
+    // sleepForMs(1000);
+    // LED_turnOff('y');
+
+    // LED_turnOn('g');
+    // sleepForMs(1000);
+    // LED_turnOff('g');
+    
 
 
 }
 
 
 
+
 int main(){
 
-    // checkRGB();
-    initInterface();
+    init_everything();
 
-    displayText(1);
-
-    
-    initRGB();
-    // makinitBuzzer();
-    // setRGB((RGB){100,0,0});
-    // setBuzzer(0);
-
-    play_easy();
-
-
-
-    // initRGB();
-    // setRGB(0,0,100);
-    // for (int i = 0; i< 255; i+=10){
-
-    //     setRGB(0,0,i);
-    //     sleepForMs(100);
-    // }
-    // checkChannels();
-
-
-    // initRGB();
-
-
-    // initLedMatrix();
-    // initLedMatrix2();
-    // initRGB();
-    // initInterface();
-
-    // displayText(1);
-
-    // printf("Starting!\n");
-
-    // Reaction reaction = start_button_timing();
-
-    // printf("%.2f, %.2f\n", reaction.player1, reaction.player2);
-    
-    // initBuzzer();
-
-    // setBuzzer(0);
-
-
-    // alarm(1);
-    // /* Register the Alarm Handler */
-    // // signal(SIGALRM, ALARMhandler);
-
-    // // /* Run SDD1306 Initialization Sequence */
-
-
-
-    // setRGB(0, 255, 0);
-    // for(int i = 0; i <255; i++){
-
-    //     clearDisplay();
-    //     setCursor(0,0);
-
-    //     setRGB(255, i, 255-i);
-
-    //     printNumber(i, DEC);
-        
-    //     sleepForMs(1);
-    //     Display();
-
-    //     sleepForMs(1);
-    // }
-
-
-    // for(int i = 0; i <255; i++){
-
-    //     clearDisplay();
-    //     setCursor(0,0);
-
-    //     setRGB(0, i, 255-i);
-
-    //     printNumber(i, DEC);
-        
-    //     sleepForMs(1);
-    //     Display();
-
-    //     sleepForMs(1);
-    // }
-
-
-
-    // checkChannels();
-    // setPWM("period", PERIOD_NS);
-    // write_config(PWM_CHANNEL0, "enable", "1");
+    test_everything();
 
     
-    // for(int i =0; i < 100; i++){
-
-
-    //     setPWM("duty_cycle", PERCENT_DUTY_CYCLE_TO_NS(i));
-    //     sleepForMs(100);
-
-    // }
-
     
 
     

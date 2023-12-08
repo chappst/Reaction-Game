@@ -20,6 +20,8 @@
 
 void initLedMatrix();
 void initLedMatrix2();
+void clearMatrix();
+void clearMatrix2();
 void displayInteger(int value);
 void displayInteger2(int value);
 

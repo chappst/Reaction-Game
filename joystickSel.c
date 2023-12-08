@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "joystickSel.h"
+#include "interface.h"
 #include <unistd.h>
 #include <time.h>
 #include <stdio.h>
@@ -71,7 +72,7 @@ int JoystickDirection(){
         return 1; // Right
     } else if (x > 0.5) {
         return 2; // Left
-    } else if (y > 0.5) {
+    } else if (y > 0.99) {
         return 3; // Down
     } else if (y < -0.5) {
         return 4; // Up
@@ -84,39 +85,76 @@ int JoystickDirection(){
 
 int JoystickChoice() {
     int choice = 0;
-    int difficulty = -1;
+    int page = 0;
+    int difficulty = 0;
     int prevChoice = -1;
 
-    while (1) {
+
+    int selected = 0;
+
+    while (!selected) {
         choice = JoystickDirection();
 
-        if (choice == 3 && prevChoice != 3) {
-            displaySelectedDifficulty(difficulty);
-            break; // Exit the loop after selecting the difficulty
-        }
+        // if (choice == 3 && prevChoice != 3) {
+        //     // displaySelectedDifficulty(difficulty);
+        //     break; // Exit the loop after selecting the difficulty
+        // }
+
+        // LEFT select
+        // UP back
+        // DOWN forward
 
         switch (choice) {
-            case 1: // Right
+            case 4: 
+                if (page == 3){
+                    break;
+                }
+                page++;
                 difficulty = 0; // Set a default value if necessary
                 displayEasy();
                 break;
-            case 2: // Left
+            case 3: if (page == 0){
+                    break;
+                }
+                page--;
                 difficulty = 1; // Set a default value if necessary
                 displayHard();
-                break;
-            case 4: // Up
-                difficulty = 2; // Set a default value if necessary
-                displayMed();
-                break;
-            case 0: // Centred
-                // Handle centred position if needed
-                break;
-            default:
-                // Handle other directions or errors
-                break;
+            case 1: 
+                if (page == 0){
+
+                    break;
+                }
+
+                difficulty = page;
+
+                selected = 1;
+
+                printf("Difficulty selected!! %d\n", difficulty);
         }
 
-        prevChoice = choice;
+        displayText(page);
+        // switch (choice) {
+        //     case 1: // Right
+        //         difficulty = 0; // Set a default value if necessary
+        //         displayEasy();
+        //         break;
+        //     case 2: // Left
+        //         difficulty = 1; // Set a default value if necessary
+        //         displayHard();
+        //         break;
+        //     case 4: // Up
+        //         difficulty = 2; // Set a default value if necessary
+        //         displayMed();
+        //         break;
+        //     case 0: // Centred
+        //         // Handle centred position if needed
+        //         break;
+        //     default:
+        //         // Handle other directions or errors
+        //         break;
+        // }
+
+        // prevChoice = choice;
     }
 
     return 0;
@@ -125,16 +163,19 @@ int JoystickChoice() {
 
 // Function definitions for displaying difficulty levels
 void displayEasy() {
+    displayText(EASY_PAGE);
     printf("=== Easy Mode ===\n");
     printf("Instructions for Easy Mode\n");
 }
 
 void displayMed() {
+    displayText(MEDIUM_PAGE);
     printf("=== Medium Mode ===\n");
     printf("Instructions for Medium Mode\n");
 }
 
 void displayHard() {
+    displayText(HARD_PAGE);
     printf("=== Hard Mode ===\n");
     printf("Instructions for Hard Mode\n");
 }

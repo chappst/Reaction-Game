@@ -13,10 +13,10 @@ typedef struct Text{
 }Text;
 
 const static Text TextPages[] = {
-    {"Easy(1/4):", "One led goes on/off"},
-    {"Medium(2/4):", "One led goes on/off"},
-    {"Hard(3/4):", "One led goes on/off"},
-    {"Easy(4/4):", "One led goes on/off"},
+    {"Reaction Game(1/4):", "Go to next page"},
+    {"Easy(2/4):", "One led goes on/off"},
+    {"Medium(3/4):", "Med"},
+    {"Hard(4/4):", "Harder"},
 };
 
 void initInterface(){
@@ -59,11 +59,46 @@ void displayText(int page_num){
 
 }
 
-void updateInterface(int p1Score, int p2Score, int iteration){
+static void printText(const char* first_line, const char* second_line){
 
-    // get percentage of points won by each player 
-    double p1Percent = ((double)p1Score/iteration)*100.0;
-    double p2Percent = ((double)p2Score/iteration)*100.0;
+    clearDisplay();
 
-    setRGB((RGB){ p1Percent, p2Percent, 0 });
+    setCursor(0,0);
+
+    print_strln(first_line);
+    print_str(second_line);
+        
+    sleepForMs(1);
+    Display();
+}
+
+void updateInterface(int p1Score, int p2Score, int iteration, int num_rounds){
+
+    int winner = 0;
+    if(p1Score > p2Score){
+
+            winner = 1;
+
+            printf("Player 1 wins the game!\n");
+
+    }else{
+        winner = 2;
+
+        printf("Player 2 wins the game!\n");
+    }
+
+    char first_line[128];
+    char second_line[128];
+    
+    sprintf(first_line, "Player %d wins! ", winner);
+    sprintf(second_line, "(%d/%d)", iteration, num_rounds);
+
+
+    printText(first_line, second_line);
+
+    // // get percentage of points won by each player 
+    // double p1Percent = ((double)p1Score/iteration)*100.0;
+    // double p2Percent = ((double)p2Score/iteration)*100.0;
+
+    // setRGB((RGB){ p1Percent, p2Percent, 0 });
 }

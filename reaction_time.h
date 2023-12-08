@@ -12,6 +12,7 @@
 typedef struct Reaction{
     double player1;
     double player2;
+    bool timeout;
 }Reaction;
 
 
