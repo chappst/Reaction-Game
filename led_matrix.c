@@ -24,16 +24,6 @@ static unsigned char nine[] = {0b111, 0b101, 0b101, 0b111, 0b001, 0b001, 0b001};
 
 static unsigned char *digits[] = {zero, one, two, three, four, five, six, seven, eight, nine};
 
-//run linux command within C
-void runCommand(char *command){
-    int exitCode = system(command);
-    if (exitCode != 0){
-        perror("Unable to execute command:");
-        printf(" command: %s\n", command);
-        printf(" exitcode: %d\n", exitCode);
-        exit(1);
-    }
-}
 
 void initLedMatrix(){
     runCommand("config-pin P9_18 i2c");
