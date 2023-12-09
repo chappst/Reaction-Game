@@ -1,0 +1,37 @@
+{
+  "group": [
+    {
+      "name": "Chloe Thiessen (Beck) ",
+      "sfu_email": "cebeck",
+      "contribution": {
+        "score": 20,
+        "comment": "Chloe helped setup all of the documentation and figured out the logistics for meeting as well as contributing to the technical work as well"
+      }
+    },
+    {
+      "name": "Nimrat Gill ",
+      "sfu_email": "nimratg",
+      "contribution": {
+        "score": 20,
+        "comment": "Nimrat got the hard parts of the code working. This included the LED matrices. She updated her progress as much as possible"
+      }
+    },
+    {
+      "name": "Cole Tait",
+      "sfu_email": "cta105",
+      "contribution": {
+        "score": 20,
+        "comment": "Cole wrote a major part of the difficulty algorithms and helped fix bugs as they arose closer to demo day"
+      }
+    },
+    {
+      "name": "Rafael Guevara ",
+      "sfu_email": " rafaelg",
+      "contribution": {
+        "score": 20,
+        "comment": "I researched and wrote the PWM modules and helped debug with Cole"
+      }
+    }
+  ],
+  "confidential_comments": ""
+}
