@@ -55,12 +55,12 @@ static int choose_led_colour(int colour, bool isOn){
 
 // Led on
 void turn_on_led(int colour){
-    int pinColour;
+    int pinColour = colour;
     gpio_pin_value(pinColour, "0"); //Active low pin
 }
 
 //Led off
 void turn_off_led(int colour){
-    int pinColour;
+    int pinColour = colour;
     gpio_pin_value(pinColour, "1"); //Active low pin
 }
