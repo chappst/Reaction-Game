@@ -2,6 +2,8 @@
 #define COMMON_H
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // #define EASY 1U
 // #define MEDIUM 2U
@@ -11,12 +13,13 @@
 // #define GREEN 2U
 // #define BLUE 3U
 
+//GPIO and pin values for leds
 #define PLAYER_RED_RED "/sys/class/gpio/gpio65"
-#define PLAYER_RED_YELLOW "/sys/class/gpio/gpio26"
+#define PLAYER_RED_BLUE "/sys/class/gpio/gpio26"
 #define PLAYER_RED_GREEN "/sys/class/gpio/gpio44"
 
 #define PLAYER_GREEN_RED "/sys/class/gpio/gpio46"
-#define PLAYER_GREEN_YELLOW "/sys/class/gpio/gpio47"
+#define PLAYER_GREEN_BLUE "/sys/class/gpio/gpio47"
 #define PLAYER_GREEN_GREEN "/sys/class/gpio/gpio27"
 
 enum{
@@ -28,7 +31,7 @@ enum{
 enum{
     RED,
     GREEN,
-    YELLOW, 
+    BLUE, 
 };
 
 void runCommand(char *command);

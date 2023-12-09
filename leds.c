@@ -3,72 +3,64 @@
 #include "common.h"
 
 #include <unistd.h>
-#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <string.h>
 #include <stdbool.h>
 
-
-// GPIO pin numbers for LEDs and the USER button on BeagleBone Green
-#define LEDRED_TRIGGER_FILE "/sys/class/gpio/gpio49" //P9_23
-#define LEDGREEN_TRIGGER_FILE "/sys/class/gpio/gpio50" //P9_14
-#define LEDRED_GPIO_PIN 49
-#define LEDRED_PIN_NUM "P9_23"
-#define LEDGREEN_GPIO_PIN 70
-#define LEDGREEN_PIN_NUM "P8_45"
-#define LEDYELLOW_GPIO_PIN 61
-#define LEDYELLOW_PIN_NUM "P8_26"
-#define BUTTONRED_GPIO_PIN 65
-#define BUTTONGREEN_GPIO_PIN 27
+#define RED_LED_GPIO 49
+#define RED_LED_PIN "P9_23"
+#define GREEN_LED_GPIO 70
+#define GREEN_LED_PIN "P8_45"
+#define BLUE_LED_GPIO 61
+#define BLUE_LED_PIN "P8_26"
+#define DEFAULT_FILE_SIZE 50;
 
 //Initiating pins
-void LED_init(void){
-    GPIO_configPin(LEDRED_PIN_NUM);
-    GPIO_setForOutput(LEDRED_GPIO_PIN);
-    LED_turnOff('r');
+void init_leds(){
+    configure_pin_num(RED_LED_PIN);
+    configure_pin_num(BLUE_LED_PIN);
+    configure_pin_num(GREEN_LED_PIN);
 
-    GPIO_configPin(LEDYELLOW_PIN_NUM);
-    GPIO_setForOutput(LEDYELLOW_GPIO_PIN);
-    LED_turnOff('y');
+    set_pin_in(RED_LED_GPIO);
+    set_pin_in(BLUE_LED_GPIO);
+    set_pin_in(GREEN_LED_GPIO);
 
-    GPIO_configPin(LEDGREEN_PIN_NUM);
-    GPIO_setForOutput(LEDGREEN_GPIO_PIN);
-    LED_turnOff('g');
-
-
-    return;
+    turn_off_led(RED);
+    turn_off_led(BLUE);
+    turn_off_led(GREEN);
 }
 
-
-//Returns the coloured pin that is called
-static int selectPin(char colour, bool isOn){
+//Returns the pin number depending on the colour that is called
+static int choose_led_colour(int colour, bool isOn){
     int pin;
+    switch(colour){
+        case GREEN:
+            pin = GREEN_LED_GPIO;
+            break;
 
-    if (colour == 'g'){
-        /*Turn GREEN_LED on*/
-        pin = LEDGREEN_GPIO_PIN;
-    }
-    else if(colour == 'r'){
-        /*Turn RED_LED on*/
-        pin = LEDRED_GPIO_PIN;
-    }
-    else if(colour == 'y'){
-        /*Turn YELLOW_LED on*/
-        pin = LEDYELLOW_GPIO_PIN;
-    }
+        case BLUE:
+            pin = BLUE_LED_GPIO;
+            break;
 
+        case RED:
+            pin = RED_LED_GPIO;
+            break;
+        default:
+            break;
+    }
     return pin;
 }
 
-// Turns on the LED
-void LED_turnOn(char colour)
-{
-    GPIO_setValue(selectPin(colour, true), "0");
+// Led on
+void turn_on_led(int colour){
+    int pinColour;
+    gpio_pin_value(pinColour, "0"); //Active low pin
 }
 
-// Turns off the LED
-void LED_turnOff(char colour){
-    GPIO_setValue(selectPin(colour, false), "1");
+//Led off
+void turn_off_led(int colour){
+    int pinColour;
+    gpio_pin_value(pinColour, "1"); //Active low pin
 }

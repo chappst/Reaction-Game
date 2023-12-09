@@ -12,12 +12,12 @@
 #include "led_matrix.h"
 #include "leds.h"
 
-#define NUM_ROUNDS 5
+#define NUM_ROUNDS 11
 
 static const RGB rgbColour[] = {
     cRED,
     cGREEN,
-    cYELLOW
+    cBLUE,
 };
 
 static void choose_RGBled(int colour){
@@ -29,9 +29,9 @@ static void choose_RGBled(int colour){
         case GREEN:
             setRGB(cGREEN);
             break;
-        case YELLOW:
-            setRGB(cYELLOW);
-            printf("Setting to yellow!\n");
+        case BLUE:
+            setRGB(cBLUE);
+            printf("Setting to blue!\n");
             break;
         default:
             break;
@@ -42,13 +42,13 @@ static void rand_led_on(int colour){
 
     switch(colour){
         case 0:
-            LED_turnOn('r');
+            turn_on_led(RED);
             break;
         case 1:
-            LED_turnOn('g');
+            turn_on_led(GREEN);
             break;
         case 2:
-            LED_turnOn('y');
+            turn_on_led(BLUE);
             break;
         default:
             break;
@@ -56,18 +56,14 @@ static void rand_led_on(int colour){
 }
 
 static void rand_led_off(){
-
-    LED_turnOff('r');
-    LED_turnOff('g');
-    LED_turnOff('y');
+    turn_off_led(RED);
+    turn_off_led(GREEN);
+    turn_off_led(BLUE);
 }
 
 
 
 static void start_game(){
-    // initLedMatrix();
-    // initLedMatrix2();
-    // initBuzzer();
     clearInterface();
     clearMatrix();
     clearMatrix2();
@@ -75,9 +71,8 @@ static void start_game(){
     setBuzzer(30);
     sleepForMs(500);
     setBuzzer(0);
-    //Could Light up RGB LED too
     setRGB(cOFF);
-    srand(0);
+    srand(time(NULL));
 
     for(int i = 3; i > 0; i--){
         updateScores(i, i);
@@ -151,12 +146,6 @@ int play_easy(){
         updateInterface(p1Score, p2Score, i, NUM_ROUNDS);
         sleepForMs(rand()%2500);
     }
-
-    // if(p1Score > p1Score){
-    //     updateScores();
-    // }else{
-    //     updateScores();
-    // }
     
     updateInterface(p1Score, p2Score, NUM_ROUNDS , NUM_ROUNDS);
     
@@ -164,13 +153,6 @@ int play_easy(){
     
 
 }
-
-// void waitForButton(){
-//     While(!buttonIsPressed() || //time runs out){
-//         //Do nothing
-//     }
-
-// }
 
 int play_medium(){
 
@@ -200,7 +182,7 @@ int play_medium(){
         setRGB(cOFF);
         updateScores(p1Score, p2Score);
         updateInterface(p1Score, p2Score, i, NUM_ROUNDS);
-        sleepForMs(rand()%3500);
+        sleepForMs(rand()%2500);
     }
 
     // if(p1Score > p1Score){
@@ -243,7 +225,7 @@ int play_hard(){
         rand_led_off();
         updateScores(p1Score, p2Score);
         updateInterface(p1Score, p2Score, i, NUM_ROUNDS);
-        sleepForMs(rand()%3500);
+        sleepForMs(rand()%2500);
     }
 
     // if(p1Score > p1Score){

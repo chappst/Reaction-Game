@@ -61,9 +61,9 @@ Reaction start_button_timing(int randColor){
             buttons[0].button = PLAYER_RED_GREEN;
             buttons[1].button = PLAYER_GREEN_GREEN;
             break;
-        case YELLOW:
-            buttons[0].button = PLAYER_RED_YELLOW;
-            buttons[1].button = PLAYER_GREEN_YELLOW;
+        case BLUE:
+            buttons[0].button = PLAYER_RED_BLUE;
+            buttons[1].button = PLAYER_GREEN_BLUE;
             break;
 
         default:

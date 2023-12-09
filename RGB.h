@@ -13,7 +13,7 @@ typedef struct RGB{
 #define cOFF (RGB){0,0,0}
 #define cRED (RGB){100,0,0}
 #define cGREEN (RGB){0,100,0}
-#define cYELLOW (RGB){0,0,100}
+#define cBLUE (RGB){0,0,100}
 
 
 void initRGB();

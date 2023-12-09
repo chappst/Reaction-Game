@@ -2,53 +2,41 @@
 #include "common.h"
 #include "leds.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
+#define RED_LED_GPIO 49
+#define RED_LED_PIN "P9_23"
+#define GREEN_LED_GPIO 70
+#define GREEN_LED_PIN "P8_45"
+#define BLUE_LED_GPIO 61
+#define BLUE_LED_PIN "P8_26"
+#define DEFAULT_FILE_SIZE 50
 
-
-// GPIO pin numbers for LEDs and the USER button on BeagleBone Green
-#define LEDRED_TRIGGER_FILE "/sys/class/gpio/gpio49" //P9_23
-#define LEDGREEN_TRIGGER_FILE "/sys/class/gpio/gpio50" //P9_14
-#define LEDRED_GPIO_PIN 49
-#define LEDRED_PIN_NUM "P9_23"
-#define LEDGREEN_GPIO_PIN 70
-#define LEDGREEN_PIN_NUM "P8_45"
-#define LEDYELLOW_GPIO_PIN 61
-#define LEDYELLOW_PIN_NUM "P8_26"
-#define BUTTONRED_GPIO_PIN 65
-#define BUTTONGREEN_GPIO_PIN 27
-
-
-// Config pin for GPIO
-void GPIO_configPin(char* PIN){
-    char command[100];
-    snprintf(command, sizeof(command), "config-pin %s gpio", PIN);
-    runCommand(command);
-    return;
+//Configures the pin for led
+void configure_pin_num(char* pin){
+    char file_path[DEFAULT_FILE_SIZE];
+    snprintf(file_path, sizeof(file_path), "config-pin %s gpio", pin);
+    runCommand(file_path);
+   
 }
 
-// Configure pin for output
-void GPIO_setForOutput(int GPIO){
-    char file[100]; 
-    snprintf(file, sizeof(file), "/sys/class/gpio/gpio%d", GPIO);
-    write_config(file, "direction", "out");
-    return;
+//Set pin to write because active low
+void set_pin_in(int pin){
+    char file_path[DEFAULT_FILE_SIZE]; 
+    snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
+    write_config(file_path, "direction", "in");
 }
 
-// Configure pin for input
-void GPIO_setForInput(int GPIO){
-    char file[100]; 
-    snprintf(file, sizeof(file), "/sys/class/gpio/gpio%d", GPIO);
-    write_config(file, "direction", "in");
-    return;
+//Set pin to read because of active low
+void set_pin_out(int pin){
+    char file_path[DEFAULT_FILE_SIZE]; 
+    snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
+    write_config(file_path, "direction", "out");
 }
 
-// Set pin value
-void GPIO_setValue(int GPIO, char* value){
-    char file[100]; 
-    snprintf(file, sizeof(file), "/sys/class/gpio/gpio%d", GPIO);
-    write_config(file, "value", value);
-    return;
+
+//Write to the value of the specified gpio pin
+void gpio_pin_value(int pin, char* value){
+    char file_path[DEFAULT_FILE_SIZE]; 
+    snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
+    write_config(file_path, "value", value);
+
 }

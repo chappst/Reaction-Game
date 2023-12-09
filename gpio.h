@@ -1,17 +1,12 @@
 #ifndef _GPIO_H
 #define _GPIO_H
 
+void configure_pin_num(char* pin);
 
-// Config pin for GPIO
-void GPIO_configPin(char* PIN);
+void set_pin_in(int pin);
 
-// Configure pin for output
-void GPIO_setForOutput(int GPIO);
+void set_pin_out(int pin);
 
-// Configure pin for input
-void GPIO_setForInput(int GPIO);
-
-// Set pin value
-void GPIO_setValue(int GPIO, char* value);
+void gpio_pin_value(int pin, char* value);
 
 #endif

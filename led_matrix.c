@@ -180,8 +180,7 @@ void displayInteger2(int value)
         unsigned char shifted = (tensBinary[i]<<4) | onesBinary[i];
         displayValue[i] = shifted;
     }
-    writeI2CBytes(i2cFileDesc, REG_ADDR, displayValue, NUM_BYTES);
-    
+    writeI2CBytes(i2cFileDesc, REG_ADDR, displayValue, NUM_BYTES);    
 }
 
 
