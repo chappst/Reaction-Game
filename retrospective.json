@@ -1,0 +1,37 @@
+{
+  "group": [
+    {
+      "name": "Chloe Thiessen (Beck) ",
+      "sfu_email": "cebeck",
+      "contribution": {
+        "score": 20,
+        "comment": "I think I communicated well with the group and did my part in the time discussed by the group"
+      }
+    },
+    {
+      "name": "Nimrat Gill ",
+      "sfu_email": "nimratg",
+      "contribution": {
+        "score": 20,
+        "comment": "Did a good job at getting things done when necessary and good at communicating with the group. Contributed to their share of the project and the quality was good!"
+      }
+    },
+    {
+      "name": "Cole Tait",
+      "sfu_email": "cta105",
+      "contribution": {
+        "score": 20,
+        "comment": "Did a good job at getting things done when necessary and good at communicating with the group. Contributed to their share of the project and the quality was good! Did a great job of integrating the modules and was helpful in debugging code and compiling the program. "
+      }
+    },
+    {
+      "name": "Rafael Guevara ",
+      "sfu_email": " rafaelg",
+      "contribution": {
+        "score": 20,
+        "comment": "Did a good job at getting things done when necessary and good at communicating with the group. Contributed to their share of the project and the quality was good! Did a great job of implementing the PWM devices and was really good at debugging. "
+      }
+    }
+  ],
+  "confidential_comments": ""
+}
