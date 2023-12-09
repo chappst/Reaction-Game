@@ -23,9 +23,9 @@ void init_leds(){
     configure_pin_num(BLUE_LED_PIN);
     configure_pin_num(GREEN_LED_PIN);
 
-    set_pin_in(RED_LED_GPIO);
-    set_pin_in(BLUE_LED_GPIO);
-    set_pin_in(GREEN_LED_GPIO);
+    set_pin_out(RED_LED_GPIO);
+    set_pin_out(BLUE_LED_GPIO);
+    set_pin_out(GREEN_LED_GPIO);
 
     turn_off_led(RED);
     turn_off_led(BLUE);
@@ -33,7 +33,7 @@ void init_leds(){
 }
 
 //Returns the pin number depending on the colour that is called
-static int choose_led_colour(int colour, bool isOn){
+static int choose_led_colour(int colour){
     int pin;
     switch(colour){
         case GREEN:
@@ -55,12 +55,11 @@ static int choose_led_colour(int colour, bool isOn){
 
 // Led on
 void turn_on_led(int colour){
-    int pinColour = colour;
-    gpio_pin_value(pinColour, "0"); //Active low pin
+    
+    gpio_pin_value(choose_led_colour(colour), "0"); //Active low pin
 }
 
 //Led off
 void turn_off_led(int colour){
-    int pinColour = colour;
-    gpio_pin_value(pinColour, "1"); //Active low pin
+    gpio_pin_value(choose_led_colour(colour), "1"); //Active low pin
 }

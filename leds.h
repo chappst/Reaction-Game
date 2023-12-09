@@ -5,7 +5,7 @@
 
 void init_leds();
 
-static int choose_led_colour(int colour, bool isOn);
+static int choose_led_colour(int colour);
 
 void turn_on_led(int colour);
 

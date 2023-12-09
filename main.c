@@ -30,7 +30,6 @@ void init_everything(){
 
 int main(){  
     
-    //Initializing everything
     init_everything();
 
     while(1){
@@ -45,12 +44,4 @@ int main(){
         
         end_game(difficulty, winner);
     }
-    
-
-
-    
-    
-
-    
-
 }

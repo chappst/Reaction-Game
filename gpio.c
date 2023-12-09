@@ -8,7 +8,7 @@
 #define GREEN_LED_PIN "P8_45"
 #define BLUE_LED_GPIO 61
 #define BLUE_LED_PIN "P8_26"
-#define DEFAULT_FILE_SIZE 50
+#define DEFAULT_FILE_SIZE 100
 
 //Configures the pin for led
 void configure_pin_num(char* pin){
@@ -20,6 +20,7 @@ void configure_pin_num(char* pin){
 
 //Set pin to write because active low
 void set_pin_in(int pin){
+    printf("Setting pin\n");
     char file_path[DEFAULT_FILE_SIZE]; 
     snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
     write_config(file_path, "direction", "in");
@@ -36,6 +37,7 @@ void set_pin_out(int pin){
 //Write to the value of the specified gpio pin
 void gpio_pin_value(int pin, char* value){
     char file_path[DEFAULT_FILE_SIZE]; 
+    printf("PINVLUE: %d, %s\n",pin, value );
     snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
     write_config(file_path, "value", value);
 

@@ -27,6 +27,7 @@ void sleepForMs(long long delayInMs);
 
 int main(){
 
+    initInterface();
     /*
         You may add more complex conditions such as
         reading a joystick to determine whether to increment or decrement
