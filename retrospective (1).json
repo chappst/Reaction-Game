@@ -1,0 +1,37 @@
+{
+  "group": [
+    {
+      "name": "Nimrat Gill",
+      "sfu_email": "nimratg",
+      "contribution": {
+        "score": 20,
+        "comment": "Worked on the LED_MATRIX, LEDs, and Buttons setup. Getting a better handle on the course material could've made a big difference in the work quality."
+      }
+    },
+    {
+      "name": "Chloe Beck",
+      "sfu_email": "cebeck",
+      "contribution": {
+        "score": 20,
+        "comment": "\nHandled setting up the joystick and menu display. Also, took the lead in working on the reports."
+      }
+    },
+    {
+      "name": "Rafael Guevara",
+      "sfu_email": "rafaelg",
+      "contribution": {
+        "score": 20,
+        "comment": "\nHad a solid grasp of threading and collaborated to put together PWM and other project components."
+      }
+    },
+    {
+      "name": "Cole Tait",
+      "sfu_email": "cta105",
+      "contribution": {
+        "score": 20,
+        "comment": "Effectively implemented various game-level algorithms and built upon the work of others to make it more efficient."
+      }
+    }
+  ],
+  "confidential_comments": ""
+}
