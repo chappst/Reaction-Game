@@ -15,7 +15,6 @@ typedef struct RGB{
 #define cGREEN (RGB){0,100,0}
 #define cBLUE (RGB){0,0,100}
 
-
 void initRGB();
 void setRGB(RGB rgb);
 

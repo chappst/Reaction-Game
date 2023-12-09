@@ -1,3 +1,4 @@
+//Referenced a guide from Brian Fraser
 #include "gpio.h"
 #include "common.h"
 #include "leds.h"
@@ -14,19 +15,17 @@
 void configure_pin_num(char* pin){
     char file_path[DEFAULT_FILE_SIZE];
     snprintf(file_path, sizeof(file_path), "config-pin %s gpio", pin);
-    runCommand(file_path);
-   
+    runCommand(file_path); 
 }
 
-//Set pin to write because active low
+//Set pin to read because active low
 void set_pin_in(int pin){
-    printf("Setting pin\n");
     char file_path[DEFAULT_FILE_SIZE]; 
     snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
     write_config(file_path, "direction", "in");
 }
 
-//Set pin to read because of active low
+//Set pin to write because of active low
 void set_pin_out(int pin){
     char file_path[DEFAULT_FILE_SIZE]; 
     snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
@@ -37,8 +36,6 @@ void set_pin_out(int pin){
 //Write to the value of the specified gpio pin
 void gpio_pin_value(int pin, char* value){
     char file_path[DEFAULT_FILE_SIZE]; 
-    printf("PINVLUE: %d, %s\n",pin, value );
     snprintf(file_path, sizeof(file_path), "/sys/class/gpio/gpio%d", pin);
     write_config(file_path, "value", value);
-
 }

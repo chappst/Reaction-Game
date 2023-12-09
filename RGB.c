@@ -1,4 +1,3 @@
-
 #include "RGB.h"
 #include <string.h>
 #include <stdlib.h>
@@ -13,7 +12,6 @@
 #define GREEN_PIN "P9.14"
 #define BLUE_PIN "P9.16"
 
-
 #define PERIOD_NS 1000000
 // pwmchannel 2 -> 1A or 1B
 // pwmchannel 0 -> 2A or 2B (22j)
@@ -22,7 +20,7 @@
 // P9.16 config-pin channel5 pwm1
 
 void initRGB(){
-    
+
     initPWM(RED_PIN, RED_PWM, PERIOD_NS, 50);
     initPWM(GREEN_PIN, GREEN_PWM, PERIOD_NS, 50);
     initPWM(BLUE_PIN, BLUE_PWM, PERIOD_NS, 50);

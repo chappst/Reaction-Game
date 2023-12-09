@@ -1,5 +1,6 @@
 #ifndef LED_MATRIX_H
 #define LED_MATRIX_H
+//Referenced a guide from Brian Fraser
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,6 +28,4 @@ void displayInteger2(int value);
 void displayface(const char *face);
 void displayface2(const char *face);
 
-//extern int i2cFileDesc;
-
-#endif // LED_MATRIX_H
+#endif

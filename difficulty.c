@@ -82,7 +82,6 @@ static void start_game(){
     clearMatrix();
     clearMatrix2();
     sleepForMs(1000);
-
 }
 
 
@@ -92,18 +91,13 @@ int end_game(int difficulty, int winner){
     sleepForMs(500);
     setBuzzer(0);
 
-    
-
     //light led of winner
-    //display continue screen():
+    //display continue screen
     displayContinue(winner);
-
 
     int dir;
     do{
         dir = JoystickDirection();
-
-
     }while(dir == 0);
 
     if(JoystickDirection() == 1){
@@ -113,7 +107,6 @@ int end_game(int difficulty, int winner){
         clearMatrix2();
     }else{
         // Go back to main screen
-
     }
 }
 
@@ -150,8 +143,6 @@ int play_easy(){
     updateInterface(p1Score, p2Score, NUM_ROUNDS , NUM_ROUNDS);
     
     return (p1Score > p2Score) ? 1:2; // return who won
-    
-
 }
 
 int play_medium(){
@@ -185,16 +176,9 @@ int play_medium(){
         sleepForMs(rand()%2500);
     }
 
-    // if(p1Score > p1Score){
-    //     updateScores();
-    // }else{
-    //     updateScores();
-    // }
-    
     updateInterface(p1Score, p2Score, NUM_ROUNDS , NUM_ROUNDS);
     
     return (p1Score > p2Score) ? 1:2; // return who won
-
 }
 
 int play_hard(){
@@ -228,12 +212,6 @@ int play_hard(){
         sleepForMs(rand()%2500);
     }
 
-    // if(p1Score > p1Score){
-    //     updateScores();
-    // }else{
-    //     updateScores();
-    // }
-    
     updateInterface(p1Score, p2Score, NUM_ROUNDS , NUM_ROUNDS);
     
     return (p1Score > p2Score) ? 1:2; // return who won
@@ -241,7 +219,6 @@ int play_hard(){
 
 int choose_difficulty(int difficulty){
 
-    
     clearInterface();
 
     int winner;

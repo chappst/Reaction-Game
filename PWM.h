@@ -1,10 +1,8 @@
-
 #pragma once
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-
 #define PWM_CHANNEL(buffer, chip, pin) sprintf(buffer, "/sys/class/pwm/pwmchip%d/pwm%d", chip, pin)
 #define PWM_9_22 "/sys/class/pwm/pwmchip3/pwm0"
 #define PWM_9_21 "/sys/class/pwm/pwmchip3/pwm1"

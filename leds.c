@@ -1,13 +1,12 @@
+//Referenced a guide from Brian Fraser
 #include "leds.h"
 #include "gpio.h"
 #include "common.h"
-
+#include <sys/wait.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/wait.h>
 #include <string.h>
-#include <stdbool.h>
 
 #define RED_LED_GPIO 49
 #define RED_LED_PIN "P9_23"
@@ -39,11 +38,9 @@ static int choose_led_colour(int colour){
         case GREEN:
             pin = GREEN_LED_GPIO;
             break;
-
         case BLUE:
             pin = BLUE_LED_GPIO;
             break;
-
         case RED:
             pin = RED_LED_GPIO;
             break;
@@ -55,11 +52,12 @@ static int choose_led_colour(int colour){
 
 // Led on
 void turn_on_led(int colour){
-    
-    gpio_pin_value(choose_led_colour(colour), "0"); //Active low pin
+    int ledColour = choose_led_colour(colour);
+    gpio_pin_value(ledColour, "0"); //Active low pin
 }
 
 //Led off
 void turn_off_led(int colour){
-    gpio_pin_value(choose_led_colour(colour), "1"); //Active low pin
+    int ledColour = choose_led_colour(colour);
+    gpio_pin_value(ledColour, "1"); //Active low pin
 }

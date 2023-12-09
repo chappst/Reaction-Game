@@ -1,5 +1,6 @@
 #ifndef _GPIO_H
 #define _GPIO_H
+//Referenced a guide from Brian Fraser
 
 void configure_pin_num(char* pin);
 

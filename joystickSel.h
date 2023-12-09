@@ -1,5 +1,6 @@
 #ifndef JOYSTICKSEL_H
 #define JOYSTICKSEL_H
+//Referenced a guide from Brian Fraser
 
 double Joystick_readX();
 double Joystick_readY();

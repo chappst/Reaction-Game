@@ -1,4 +1,4 @@
-
+//Referenced a guide from Brian Fraser
 #include "common.h"
 #include <unistd.h>
 #include <time.h>
@@ -52,6 +52,7 @@ int write_config(const char* path, const char* config, const char* data) {
 
 	return fclose(fp);
 }
+
 int read_config(char* buffer, const char* path, const char* config) {
 	
 	char fpath[1024];

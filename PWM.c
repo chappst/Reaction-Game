@@ -7,7 +7,6 @@ void initPWM(const char* pinout, const char* channel, int period, int duty_cycle
     sprintf(buffer, "config-pin %s pwm", pinout);
     runCommand(buffer);
 
-
     setPWM(channel, period, duty_cycle);
 
     write_config(channel, "enable", "1");

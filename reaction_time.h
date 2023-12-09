@@ -15,8 +15,6 @@ typedef struct Reaction{
     bool timeout;
 }Reaction;
 
-
-
-
 Reaction start_button_timing(int randColor);
+
 #endif 

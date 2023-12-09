@@ -1,10 +1,9 @@
-
+//OLED was referenced from guide included in folder
 #include "interface.h"
 #include "led_matrix.h"
 #include "RGB.h"
 #include "common.h"
 #include <stdlib.h>
-
 #include "lib/I2C.h"
 #include "lib/SSD1306_OLED.h"
 
@@ -19,7 +18,6 @@ const static Text TextPages[] = {
     {"Medium(3/4):", "Med"},
     {"Hard(4/4):", "Harder"},
 };
-
 
 void initInterface(){
     
@@ -42,14 +40,11 @@ void initInterface(){
 
     setTextSize(2);
     setTextColor(WHITE);
-
 }
 
 void clearInterface(){
     clearDisplay();
-
 }
-
 
 void displayText(int page_num){
 
@@ -64,7 +59,6 @@ void displayText(int page_num){
         
     sleepForMs(1);
     Display();
-
 }
 
 static void printText(const char* first_line, const char* second_line){
@@ -117,11 +111,7 @@ void updateInterface(int p1Score, int p2Score, int iteration, int num_rounds){
     
     sprintf(first_line, "P%d wins! ", winner);
     sprintf(second_line, "(%d/%d)", iteration, num_rounds);
-
-
     printText(first_line, second_line);
-
-
 
     // // get percentage of points won by each player 
     // double p1Percent = ((double)p1Score/iteration)*100.0;

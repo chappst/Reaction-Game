@@ -1,4 +1,3 @@
-
 #include "reaction_time.h"
 #include <pthread.h>
 
@@ -9,9 +8,7 @@ typedef struct ButtonArgs{
 
 }ButtonArgs;
 
-
 #define TIMEOUT_S 3
-
 #define PRESSED '1'
 #define UNPRESSED '0'
 
@@ -30,7 +27,6 @@ static void sig_handler(int signo)
 
 void* thread_check_button(void* args){
 
-
     ButtonArgs* button = (ButtonArgs*) args;
 
     // possible infinite loop if no one presses the button...
@@ -46,7 +42,6 @@ void* thread_check_button(void* args){
         button->reaction_us += 1;
     }
 }
-
 
 Reaction start_button_timing(int randColor){
 
@@ -71,7 +66,6 @@ Reaction start_button_timing(int randColor){
             break;
     }
 
-
     printf("%c %c\n", read_gpio(buttons[0].button),read_gpio(buttons[1].button));
     for (int i = 0; i < NUM_BUTTONS; i++){
         while(read_gpio(buttons[i].button) == PRESSED);
@@ -94,7 +88,6 @@ Reaction start_button_timing(int randColor){
         printf("p%d: %.2f\n", i+1, buttons[i].reaction_us);
     }
     
-
     return (Reaction){
         .player1 = buttons[0].reaction_us,
         .player2 =buttons[1].reaction_us,

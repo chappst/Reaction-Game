@@ -1,0 +1,37 @@
+{
+  "group": [
+    {
+      "name": "Cole Tait",
+      "sfu_email": "cta",
+      "contribution": {
+        "score": 20,
+        "comment": "I believe I contributed equally to my group members in getting my portions of the code project complete in time for the demo. I also think I communicated well, but could have been have communicated to the group in a more timely manner at times."
+      }
+    },
+    {
+      "name": "Rafael Guevara",
+      "sfu_email": "rafaelg",
+      "contribution": {
+        "score": 20,
+        "comment": "Rafael helped me a ton with debugging the code, as well as finding creative solutions to solving some of the tougher problems we dealt with in regards to our code. He developed many of the core modules needed for the project. He also communicated well and on a timely manner with the group."
+      }
+    },
+    {
+      "name": "Chloe Thiessen (Beck)",
+      "sfu_email": "cebeck",
+      "contribution": {
+        "score": 20,
+        "comment": "Chloe really helped structure the project and took initiative in making sure that everything was completed in a timely manner, as well as organizing  group meetings. She also contributed greatly to the documentation of this project, as well as helped with the wiring and coding of modules such as the joystick and OLED screen. She also communicated with the group very well, and was quick to respond when needed."
+      }
+    },
+    {
+      "name": "Nimrat Gill",
+      "sfu_email": "nimratg",
+      "contribution": {
+        "score": 20,
+        "comment": "Nimrat helped create the schematics for the wiring, as well as helped code modules such as the LED matrix, LEDS and visuals for the project. She also led in putting together the physical aspect of project which included correctly wiring and ensuring the voltages were correct. She also contributed to the documentation with Chloe. She communicated well with the group and on a timely manner."
+      }
+    }
+  ],
+  "confidential_comments": ""
+}

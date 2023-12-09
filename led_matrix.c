@@ -1,3 +1,4 @@
+//Referenced a guide from Brian Fraser
 #include "led_matrix.h"
 #include <unistd.h>
 #include <time.h>

@@ -1,13 +1,6 @@
 #ifndef DIFFICULTY_H
 #define DIFFICULTY_H
 
-
-
-
-
-// static const int ledColour[3] = {RED, GREEN, BLUE};
-
-
 static void start_game();
 
 static void choose_RGBled(int colour);
@@ -27,6 +20,5 @@ static void difficulty_hard();
 int play_easy();
 
 int choose_difficulty(int difficulty);
-
 
 #endif
