@@ -20,8 +20,5 @@ target:
 host: 
 	gcc ${CFLAGS} -o  ${EXEC_HOST} ${SRC}
 
-setup:
-	cp setup.sh ${TARGET_DIR}
-	
 clean: 
 	rm -f *.o *.bin *.hex *_host *_target
